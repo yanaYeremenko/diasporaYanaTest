@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 public class Helpers {
 
     public static void dropCreateSeedDiasporaDB(){
-        String output = Helpers.executeCommand("cleardiaspora");
+        String output = Helpers.executeCommand("/home/yana/.scripts/cleardiaspora");
         System.out.println(output);
     }
 
