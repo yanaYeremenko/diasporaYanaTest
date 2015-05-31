@@ -14,6 +14,7 @@ import java.io.IOException;
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.confirm;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -81,7 +82,14 @@ public class AllDiasporaTests {
         //comment posts
         contentsList.find(text("T from tags"));
         commentPublic("M");
+
+        //delete post
+        deletePost("T from tags");
+
+        //cencel delete post
+
     }
+
 
         @After
         public void tearDown ()throws IOException {

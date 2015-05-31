@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.ElementsCollection;
+import org.openqa.selenium.Alert;
 import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -8,12 +9,14 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.confirm;
+
 /**
  * Created by yana on 30.05.15.
  */
 public class diaspora {
 
-    public static ElementsCollection contentsList =  $$(".markdown-content");
+    public static ElementsCollection contentsList =  $$(".stream_element.loaded");
     public static ElementsCollection aspectsList =  $$(".selectable");
 
     @Step
@@ -73,5 +76,11 @@ public class diaspora {
     public static void userPopupMenu(String nameMenuItem){
         $(".user-menu-trigger").click();
         $(byText(nameMenuItem)).click();
+    }
+
+    @Step
+     public static void deletePost(String postText) {
+        contentsList.find(text(postText)).hover().find(".entypo.trash").click();
+        confirm("Are you sure?");
     }
 }
